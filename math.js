@@ -7,6 +7,17 @@ Math.ellipse=function(t,o) {
 		y:o.x_radius*Math.cos(2*Math.PI*t/o.time+o.start_angle)*Math.sin(o.rotation)+o.y_radius*Math.sin(2*Math.PI*t/o.time+o.start_angle)*Math.cos(o.rotation)+o.y_offset
 	}
 }
+Math.foci=function(a,b) {
+	return Math.sqrt(Math.pow(Math.max(a,b),2)-Math.pow(Math.min(a,b),2));
+}
+Math.peraph=function(p,a) {
+	return {
+		smaj:(p+a)/2,
+		ecc:(a-p)/(a+p),
+		smin:.5*(p+a)*Math.sqrt(1-Math.pow((a-p)/(a+p),2)),
+		foci:(a-p)
+	}
+}
 jQuery.fn.revolve=function(o) {
 	o=$.extend({
 		x_radius:100,

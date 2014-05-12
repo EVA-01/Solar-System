@@ -10,12 +10,47 @@
 			var y_offset=200;
 			var earthYear=365.25636;
 			var sYear=1000;
+			var planets={
+				mercury:{
+					p:.30749951,
+					a:.46669835,
+					time:87.96926/earthYear
+				},
+				venus:{
+					p:.7184327,
+					a:.7282313,
+					time:224.7008/earthYear
+				},
+				earth:{
+					p:.98328989,
+					a:1.01671033,
+					time:1
+				},
+				mars:{
+					p:1.38133346,
+					a:1.66599116,
+					time:686.9796/earthYear
+				}
+			}
+			for(var g in planets) {
+				planets[g]=$.extend(planets[g], Math.peraph(planets[g].p,planets[g].a));
+			}
 			$(document).ready(function() {
 				$("#sun").css({"position":"absolute","top":y_offset+"px","left":x_offset+"px"});
+				for(var c in planets) {
+					$("#"+c).revolve({
+						x_radius:au*planets[c].smaj,
+						y_radius:au*planets[c].smin,
+						x_offset:x_offset+au*planets[c].foci,
+						y_offset:y_offset,
+						time:planets[c].time*sYear,
+						displays:planets[c].time*sYear
+					});
+				}/*
 				$("#mercury").revolve({
-					x_radius:au*.46669835,
+					x_radius:au*planets.mercury.,
 					y_radius:au*.30749951,
-					x_offset:x_offset,
+					x_offset:x_offset+Math.foci(au*.46669835, au*.30749951),
 					y_offset:y_offset,
 					time:87.96926/earthYear*sYear,
 					displays:87.96926/earthYear*sYear
@@ -23,7 +58,7 @@
 				$("#venus").revolve({
 					x_radius:au*.7282313,
 					y_radius:au*.7184327,
-					x_offset:x_offset,
+					x_offset:x_offset+Math.foci(au*.7282313, au*.7184327),
 					y_offset:y_offset,
 					time:224.7008/earthYear*sYear,
 					displays:224.7008/earthYear*sYear
@@ -31,7 +66,7 @@
 				$("#earth").revolve({
 					x_radius:au*1.01671033,
 					y_radius:au*.98328989,
-					x_offset:x_offset,
+					x_offset:x_offset+Math.foci(au*1.01671033, au*.98328989),
 					y_offset:y_offset,
 					time:sYear,
 					displays:sYear
@@ -39,11 +74,11 @@
 				$("#mars").revolve({
 					x_radius:au*1.66599116,
 					y_radius:au*1.38133346,
-					x_offset:x_offset,
+					x_offset:x_offset+Math.foci(au*1.66599116, au*1.38133346),
 					y_offset:y_offset,
 					time:686.9796/earthYear*sYear,
 					displays:686.9796/earthYear*sYear
-				});
+				});*/
 			});
 		</script>
 		<style>
