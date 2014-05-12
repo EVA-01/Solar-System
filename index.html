@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="math.js"></script>
+		<script>
+			var k;
+			var au=200;
+			var x_offset=400;
+			var y_offset=400;
+			var earthYear=365.25636;
+			var sYear=1000;
+			$(document).ready(function() {
+				$("#sun").css({"position":"absolute","top":y_offset+"px","left":x_offset+"px"});
+				$("#mercury").revolve({
+					x_radius:au*.46669835,
+					y_radius:au*.30749951,
+					x_offset:x_offset,
+					y_offset:y_offset,
+					time:87.96926/earthYear*sYear,
+					displays:87.96926/earthYear*sYear
+				});
+				$("#venus").revolve({
+					x_radius:au*.7282313,
+					y_radius:au*.7184327,
+					x_offset:x_offset,
+					y_offset:y_offset,
+					time:224.7008/earthYear*sYear,
+					displays:224.7008/earthYear*sYear
+				});
+				$("#earth").revolve({
+					x_radius:au*1.01671033,
+					y_radius:au*.98328989,
+					x_offset:x_offset,
+					y_offset:y_offset,
+					time:sYear,
+					displays:sYear
+				});
+				$("#mars").revolve({
+					x_radius:au*1.66599116,
+					y_radius:au*1.38133346,
+					x_offset:x_offset,
+					y_offset:y_offset,
+					time:686.9796/earthYear*sYear,
+					displays:686.9796/earthYear*sYear
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<div id="sun">S</div>
+		<div id="mercury">Me</div>
+		<div id="venus">V</div>
+		<div id="earth">E</div>
+		<div id="mars">Ma</div>
+	</body>
+</html>
