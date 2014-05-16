@@ -16,10 +16,10 @@ Math.peraph=function(p,a) {
 	}
 }
 Math.auToKm=function(au) {
-	return au*1.496*Math.ten(8);
+	return au*1.496*Math.pow(10,8);
 }
 Math.kmToAu=function(km) {
-	return km*6.685*Math.ten(-9);
+	return km*6.685*Math.pow(10,-9);
 }
 Math.der=function(f, x, dx) {
 	return (f(x+(dx || .0000001))-f(x))/(dx || .0000001);
@@ -34,12 +34,12 @@ Math.newtonsMethod=function(c,i,a,b) {
 	return c;
 }
 Math.ten=function(p) {
-	return Math.ten(p);
+	return Math.pow(10,p);
 }
 Math.posRR=function(radius,radian) {
 	return {x:radius*Math.cos(radian),y:radius*Math.sin(radian)}
 }
-Math.G=6.67384*Math.ten(-20);
+Math.G=6.67384*Math.pow(10,-20);
 Math.keplerianMotion=function(a,t) {
 	/* Mean motion in radians per year */
 	var mm=2*Math.PI/a.time;
